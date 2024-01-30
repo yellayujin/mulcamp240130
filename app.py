@@ -8,6 +8,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 
 def main():
@@ -32,7 +33,25 @@ def main():
     col3.metric("Total Sales", "1,403,291K", "23K")
 
 
-    tab1, tab2, tab3, tab4 = st.tabs(['Eval Set','Order Hour of Day', 'Overview: aisle_id', 'Overview: department_id'])
+    tab0, tab1, tab2, tab3, tab4 = st.tabs(['Cart Order','Eval Set','Order Hour of Day', 'Overview: aisle_id', 'Overview: department_id'])
+    
+    with tab0:
+        st.title('Add to cart order by reorder')
+        col1, col2 = st.columns([1,1])
+
+        with col1:
+            st.header('Reordered: N')
+            fig, ax = plt.subplots()
+            sns.histplot(x = 'add_to_cart_order', data=order_products_prior1.loc[order_products_prior1['reordered']==0], ax=ax)
+            st.pyplot(fig)
+
+        with col2:
+            st.header('Reordered: Y')
+            fig, ax = plt.subplots()
+            sns.histplot(x = 'add_to_cart_order', data=order_products_prior1.loc[order_products_prior1['reordered']==1], ax=ax)
+            st.pyplot(fig)
+    
+
     with tab1: 
         fig, ax = plt.subplots()
         st.header("Eval Set")
