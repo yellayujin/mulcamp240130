@@ -7,10 +7,18 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 
+# 데이터 불러오기
+@st.cache_data
+def load_data():
+    df = sns.load_dataset("iris")
+    return df
+
+
 def main():
     st.title("Hello :heart:")
-    iris = sns.load_dataset('iris')
-    st.write(iris)
+    iris = load_data()
+    st.table(iris)              # 코드 변경사항은 git add, commit, push로 업데이트
+
 
 if __name__ == "__main__":
     main()
