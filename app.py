@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 def main():
     
     st.title("Welcome!🧐")
-    '''
+    
     st.markdown("✏️This website is a space for me to apply what I've learned today. :rainbow[Feel free to explore!]✏️")
 
     aisles = pd.read_csv('instacart-market-basket-analysis/aisles.csv')
@@ -77,7 +77,7 @@ def main():
     department_id_input = st.sidebar.text_input("Enter an ID of the department (e.g. 6)", value="6")
     st.sidebar.write("Searching: ", department_id_input)
     st.sidebar.write(departments.loc[departments['department_id'] == int(department_id_input), :].set_index('department_id'))
-    '''
-    
+
+
 if __name__ == "__main__":
     main()
